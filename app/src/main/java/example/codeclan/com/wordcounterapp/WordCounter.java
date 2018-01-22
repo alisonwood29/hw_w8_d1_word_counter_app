@@ -11,13 +11,13 @@ public class WordCounter {
     private String text;
     private HashMap<String, Integer> wordCounts;
 
-    public WordCounter(String word){
-        this.text = word;
+    public WordCounter(String text){
+        this.text = text;
         this.wordCounts = new HashMap<>();
     }
 
 
-    public String getWord() {
+    public String getText() {
         return this.text;
     }
 
@@ -26,15 +26,24 @@ public class WordCounter {
     }
 
     public HashMap<String, Integer> getWordMap(){
+        incrementWordCount();
         return this.wordCounts;
     }
 
-    public void splitText(String text){
-        String[] words = text.split("\\s");
+    public String[] splitText(){
+        String[] words = this.text.split("\\s");
+        return words;
     }
 
-//    public void incrementWordCount(String text){
-//        String word = text.split();
-//        Integer wordCount = wordCounts.get(word);
-//    }
+    public void incrementWordCount(){
+        for(String word: splitText()){
+            Integer wordCount = wordCounts.get(word);
+            if (wordCount == null) {
+                wordCount = 0;
+            }
+                wordCounts.put(word, wordCount + 1);
+
+        }
+
+    }
 }

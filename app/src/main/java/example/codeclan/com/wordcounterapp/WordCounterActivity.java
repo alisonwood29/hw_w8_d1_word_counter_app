@@ -31,6 +31,13 @@ public class WordCounterActivity extends AppCompatActivity {
         Log.d(getClass().toString(), "The word entered was: " + wordEntered);
         WordCounter wordCounter = new WordCounter(wordEntered);
         answer.setText(wordCounter.wordSize());
+    }
+
+    public void onCountWordButtonClick(View button){
+        String textEntered = enteredWord.getText().toString();
+        Log.d(getClass().toString(), "The word entered was: " + textEntered);
+        WordCounter wordCounter = new WordCounter(textEntered);
+        answer.setText(wordCounter.getWordMap().toString());
 
     }
 }
